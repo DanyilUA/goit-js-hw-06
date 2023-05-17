@@ -16,18 +16,12 @@ const images = [
 
 let galleryEL = document.querySelector('.gallery');
 
-images.forEach(image => {
+let pickImages = images.map((image) => {
+  let { url, alt } = image;
+  return `<li class="list-item"><img src="${url}" alt="${alt}"></li>`
+}).join('');
 
-  const { url, alt } = image;
-
-  let liEl = document.createElement('li');
-
-  liEl.insertAdjacentHTML('beforeend', `<img src = ${url} alt = ${alt}>`);
-
-  liEl.classList.add('pictures');
-
-  galleryEL.append(liEl);
-});
+galleryEL.insertAdjacentHTML('beforeend', pickImages);
 
 console.log(galleryEL);
 
